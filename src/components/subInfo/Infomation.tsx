@@ -1,17 +1,11 @@
 import Ientryinfo from '../../types'
 import {
-  TableContainer,
   Box,
-  Flex,
   Text,
-  Center,
-  Wrap,
   Card,
   Stack,
   Heading,
   CardBody,
-  CardFooter,
-  Button,
   Image,
   Tag,
 } from '@chakra-ui/react'
