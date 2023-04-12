@@ -72,3 +72,35 @@ npm install
 
 - mainpage에서 3개의 인자("sort","name",전체 array)를 slice에게 넘겨 줌
 - slice에서 조건에 따라 filter와 sort를 각각 시행한 후에 두개의 배열 중 some을 이용해 일치하는 객체를 찾아서 리턴함
+
+#### 트리구조
+
+```
+📦src
+ ┣ 📂apis
+ ┃ ┗ 📜Api.tsx
+ ┣ 📂components
+ ┃ ┣ 📂list
+ ┃ ┃ ┗ 📜topChart.tsx
+ ┃ ┣ 📂search
+ ┃ ┃ ┗ 📜nameSearch.tsx
+ ┃ ┣ 📂sort
+ ┃ ┃ ┗ 📜sortButton.tsx
+ ┃ ┗ 📂subInfo
+ ┃ ┃ ┗ 📜Infomation.tsx
+ ┣ 📂pages
+ ┃ ┣ 📜mainPage.tsx
+ ┃ ┣ 📜navigationPage.tsx
+ ┃ ┣ 📜notFoundPage.tsx
+ ┃ ┗ 📜subInfoPage.tsx
+ ┣ 📂store
+ ┃ ┣ 📂slice
+ ┃ ┃ ┣ 📜musicSlice.tsx
+ ┃ ┃ ┗ 📜sliceThunk.tsx
+ ┃ ┗ 📜store.tsx
+ ┣ 📜App.css
+ ┣ 📜App.tsx
+ ┣ 📜index.css
+ ┣ 📜index.tsx
+ ┗ 📜types.ts
+```
