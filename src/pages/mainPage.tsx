@@ -1,5 +1,5 @@
 import { useCallback, useEffect } from 'react'
-import TopChart from '../components/topChart'
+import TopChart from '../components/list/topChart'
 import { TableContainer, Box, Flex, Text } from '@chakra-ui/react'
 import NameSearch from '../components/search/nameSearch'
 import { useSearchParams } from 'react-router-dom'
@@ -23,7 +23,7 @@ function MainPage() {
     const nameInput =
       searchParams.get('name') === null ? '' : searchParams.get('name')
     const sortButton =
-      searchParams.get('sort') === null ? 'up' : searchParams.get('sort')
+      searchParams.get('sort') === null ? 'down' : searchParams.get('sort')
 
     const musicEntry = ListAllData.result.entry
 
@@ -40,7 +40,7 @@ function MainPage() {
   }, [ChangeHanlder])
 
   return (
-    <Box h='100vh' overflowY='scroll'>
+    <Box h='100vh' overflowY='scroll' ml='30px'>
       <Text fontSize='5xl' as='b'>
         {ListAllData.result.title.label}
       </Text>
