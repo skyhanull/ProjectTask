@@ -43,7 +43,11 @@ function TopChart({ data }: { data: Ientryinfo[] }) {
             onClick={() => SubPageLink(item['im:name'].label)}
           >
             <Td>
-              <Image src={`${item['im:image'][0].label}`} height='35px'></Image>
+              <Image
+                src={`${item['im:image'][0].label}`}
+                height='35px'
+                width='40px'
+              ></Image>
             </Td>
             <Td width='15rem' overflow='hidden'>
               {item['im:name'].label}
