@@ -1,10 +1,7 @@
-import { useCallback, useEffect, useState } from 'react'
-import React from 'react'
-import getInfo from '../apis/Api'
+import { useCallback, useEffect } from 'react'
 import TopChart from '../components/topChart'
-import Ientryinfo from '../types'
-import { TableContainer } from '@chakra-ui/react'
-import NameSearch from '../components/search.tsx/nameSearch'
+import { TableContainer, Box, Flex, Text } from '@chakra-ui/react'
+import NameSearch from '../components/search/nameSearch'
 import { useSearchParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { setlist } from '../store/slice/musicSlice'
@@ -12,25 +9,15 @@ import { AppDispatch, RootState } from '../store/store'
 
 function MainPage() {
   const [searchParams] = useSearchParams()
-  // const [musicEntry, setMusicEntry] = useState<Ientryinfo[]>([])
-  const tripFilter = useSelector((state: RootState) => state.musicSlice)
+
+  const ListAllData = useSelector((state: RootState) => state.musicSlice)
 
   const filterData =
-    tripFilter.itemfilter.length > 0 ? tripFilter.itemfilter : tripFilter.result
+    ListAllData.itemfilter.entry.length > 0
+      ? ListAllData.itemfilter.entry
+      : ListAllData.result.entry
 
   const dispatch = useDispatch<AppDispatch>()
-  // console.log(tripFilter.result)
-  // useEffect(() => {
-  //   const tripApi = async () => {
-  //     try {
-  //       const response = await getInfo()
-  //       setMusicEntry(response.entry)
-  //     } catch {
-  //       throw new Error()
-  //     }
-  //   }
-  //   tripApi()
-  // }, [])
 
   const ChangeHanlder = useCallback(() => {
     const nameInput =
@@ -38,7 +25,7 @@ function MainPage() {
     const sortButton =
       searchParams.get('sort') === null ? 'up' : searchParams.get('sort')
 
-    const musicEntry = tripFilter.result
+    const musicEntry = ListAllData.result.entry
 
     const dispalyData = {
       sortButton,
@@ -46,17 +33,24 @@ function MainPage() {
       musicEntry,
     }
     dispatch(setlist(dispalyData))
-  }, [searchParams, tripFilter.result])
+  }, [searchParams, ListAllData.result])
 
   useEffect(() => {
     ChangeHanlder()
   }, [ChangeHanlder])
 
   return (
-    <TableContainer>
-      <NameSearch />
-      <TopChart data={filterData} />
-    </TableContainer>
+    <Box h='100vh' overflowY='scroll'>
+      <Text fontSize='5xl' as='b'>
+        {ListAllData.result.title.label}
+      </Text>
+      <Flex flex={1}>
+        <TableContainer>
+          <NameSearch />
+          <TopChart data={filterData} />
+        </TableContainer>
+      </Flex>
+    </Box>
   )
 }
 
