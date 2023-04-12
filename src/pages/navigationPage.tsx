@@ -20,7 +20,7 @@ function NavigationPage() {
               height='40px'
               width='40px'
             ></img>
-            <Text as='b' fontSize='28px'>
+            <Text as='b' fontSize='1.5rem'>
               ELMusic
             </Text>
           </Box>
