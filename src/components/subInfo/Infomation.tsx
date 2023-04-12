@@ -8,7 +8,6 @@ import {
   CardBody,
   Image,
   Tag,
-  Link,
 } from '@chakra-ui/react'
 
 function Information({ data }: { data: Ientryinfo[] }) {
@@ -42,11 +41,11 @@ function Information({ data }: { data: Ientryinfo[] }) {
           <CardBody m='5'>
             <Box mb='5'>
               <Heading size='lg'>{data[0]['im:name'].label}</Heading>
-              <Link href={`${artistLink}`} isExternal color='green.300'>
+              <a href={`${artistLink}`} target='_blank' rel='noreferrer'>
                 <Text py='1' color='green.300'>
                   {datas['im:artist'].label}
                 </Text>
-              </Link>
+              </a>
             </Box>
             <Box as='b'>
               <Text py='2'>
