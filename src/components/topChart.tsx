@@ -1,48 +1,61 @@
 import React from 'react'
 import Ientryinfo from '../types'
-import {
-  Table,
-  Thead,
-  Tbody,
-  Tfoot,
-  Tr,
-  Th,
-  Td,
-  TableCaption,
-  TableContainer,
-  Button,
-} from '@chakra-ui/react'
-import SortButton from '../components/sort/sortBurron'
-import { Link } from 'react-router-dom'
+import { Table, Thead, Tbody, Tr, Th, Td, Image } from '@chakra-ui/react'
+import SortButton from './sort/sortButton'
+import { useNavigate } from 'react-router-dom'
+import { DragHandleIcon } from '@chakra-ui/icons'
 
 function TopChart({ data }: { data: Ientryinfo[] }) {
-  console.log(data)
+  const navigate = useNavigate()
+
+  const SubPageLink = (name: string) => {
+    navigate(`/${name}`)
+  }
+
   return (
-    <Table variant='striped' colorScheme='teal' size='sm'>
+    <Table
+      variant='striped'
+      colorScheme='gray'
+      size='sm'
+      flexDirection='column'
+    >
       <Thead>
-        <Tr>
-          <Th>image</Th>
-          <Th>
-            Title <SortButton />
+        <Tr display='flex'>
+          <Th width='230px' display='flex' alignItems='center'>
+            Song <SortButton />
           </Th>
-          <Th>Artist</Th>
-          <Th>itemCount</Th>
-          <Th>price</Th>
           <Th></Th>
-          <Th>상세페이지</Th>
+          <Th width='200px' display='flex' alignItems='center'>
+            Artist
+          </Th>
+          <Th width='200px' display='flex' alignItems='center'>
+            itemCount
+          </Th>
+          <Th width='200px' display='flex' alignItems='center'>
+            price
+          </Th>
+          <Th width='200px' display='flex' alignItems='center'>
+            상세페이지
+          </Th>
         </Tr>
       </Thead>
       <Tbody>
         {data.map((item, idx) => (
-          <Tr key={idx}>
-            {/* <Td>{item['im:artist'].label}</Td> */}
-            <Td>{item['im:name'].label}</Td>
-            <Td>{item['im:artist'].label}</Td>
-            <Td>{item['im:itemCount'].label}</Td>
-            <Td>{item['im:price'].label}</Td>
-            {/* <Link to='/idx'>
-              <Button>ddd</Button>
-            </Link> */}
+          <Tr key={idx} display='flex' alignContent='center'>
+            <Td>
+              <Image src={`${item['im:image'][0].label}`} height='35px'></Image>
+            </Td>
+            <Td width='200px' overflow='hidden'>
+              {item['im:name'].label}
+            </Td>
+            <Td width='200px' overflow='hidden'>
+              {item['im:artist'].label}
+            </Td>
+            <Td width='200px'>{item['im:itemCount'].label}</Td>
+            <Td width='200px'>{item['im:price'].label}</Td>
+            <Td onClick={() => SubPageLink(item['im:name'].label)}>
+              <DragHandleIcon />
+            </Td>
           </Tr>
         ))}
       </Tbody>
