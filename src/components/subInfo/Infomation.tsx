@@ -9,6 +9,7 @@ import {
   Image,
   Tag,
 } from '@chakra-ui/react'
+import { Link } from 'react-router-dom'
 
 function Information({ data }: { data: Ientryinfo[] }) {
   const datas = data[0]
@@ -41,11 +42,12 @@ function Information({ data }: { data: Ientryinfo[] }) {
           <CardBody m='5'>
             <Box mb='5'>
               <Heading size='lg'>{data[0]['im:name'].label}</Heading>
-              <a href={`${artistLink}`} target='_blank' rel='noreferrer'>
+              {/* <Link href={`${artistLink}`} isExternal color='green.300'> */}
+              <Link to='route' target='_blank'>
                 <Text py='1' color='green.300'>
                   {datas['im:artist'].label}
                 </Text>
-              </a>
+              </Link>
             </Box>
             <Box as='b'>
               <Text py='2'>
