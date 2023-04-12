@@ -1,46 +1,71 @@
-# Getting Started with Create React App
+# 🎧 ElMusic 사전과제
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 이름
 
-## Available Scripts
+안윤경
 
-In the project directory, you can run:
+## 프로젝트 구동 방법
 
-### `npm start`
+```
+git clone // this repository
+cd this file location
+npm install
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 배포 사이트
 
-### `npm test`
+```
+project-task-jo48tgte2-skyhanull.vercel.app
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
 
-### `npm run build`
+## 사용한 라이브러리
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<p>
+<img alt="Typescript" src="https://img.shields.io/badge/Typescript-v4.9.5-3178C6?style=plastic&logoColor=white%22/%3E"/>
+<img alt="React" src="https://img.shields.io/badge/React-v18.2.0-61DAFB?style=plastic&logo=react&logoColor=white"/>
+<img alt="Axios" src="https://img.shields.io/badge/axios-v1.3.5-5A29E4?style=plastic&logo=axios&logoColor=white"/>
+<img alt="Chakra UI" src="https://img.shields.io/badge/Chakra UI-v2.5.5-319795?style=plastic&logo=Chakra UI&logoColor=white"/>
+<img alt="Redux-toolkit" src="https://img.shields.io/badge/Redux-v8.0.5-764ABC?style=plastic&logo=Redux-toolkit&logoColor=white"/>
+</p>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### chakra-ui 사용이유
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+기존의 css로 구현을 하기에 시간이 부족했으며
 
-### `npm run eject`
+### redux-toolkit 사용이유
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Api를 메인페이지,상세페이지 두곳에 사용하기에 전역상태로 관리하기 위해 사용
+- filter및 정렬과정을 slice안에서 처리함으로써 컴포넌트를 분리하기 위해서
+-
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 프로젝트 설명
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### 기능 구현
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+1. 음원 이름으로 검색
 
-## Learn More
+- 메인페이지의 검색창에 입력시 소문자/대문자에 상관없이 같은 영문자를 가지고 있는 음반이 검색이 됨
+- x 버튼을 누르면 검색했던 것과 query string이 ""로 변경됨
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2. 음원이름으로 정렬(오름차순/내림차순)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- 테이블의 song옆의 ↑,↓ 을 누르면 각각 오름차순/내림차순으로 정렬
+
+3. 음원의 정렬과 검색이 동시에 적용이 가능하도록 구현
+
+- slice에 query string의 여부에 따라 검색/정렬이 되도록 구현
+
+4. 음원 클릭시 상세페이지로 이동
+
+- 음원목록 어디든 클릭하면 상세페이지로 이동이 가능하다
+
+### 코드 구조
+
+1. redux-thunk를 사용하여 비동기처리를 한 곳에서 해결
+
+2. 배열 정렬/필터링하는 방식
+
+- mainpage에서 3개의 인자("sort","name",전체 array)를 slice에게 넘겨 줌
+- slice에서 조건에 따라 filter와 sort를 각각 시행한 후에 두개의 배열 중 some을 이용해 일치하는 객체를 찾아서 리턴함
