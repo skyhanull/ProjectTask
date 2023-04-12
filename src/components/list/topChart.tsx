@@ -3,7 +3,6 @@ import Ientryinfo from '../../types'
 import { Table, Thead, Tbody, Tr, Th, Td, Image } from '@chakra-ui/react'
 import SortButton from '../sort/sortButton'
 import { useNavigate } from 'react-router-dom'
-import { DragHandleIcon } from '@chakra-ui/icons'
 
 function TopChart({ data }: { data: Ientryinfo[] }) {
   const navigate = useNavigate()
@@ -35,13 +34,18 @@ function TopChart({ data }: { data: Ientryinfo[] }) {
             price
           </Th>
           <Th width='200px' display='flex' alignItems='center'>
-            상세페이지
+            releaseDate
           </Th>
         </Tr>
       </Thead>
       <Tbody>
         {data.map((item, idx) => (
-          <Tr key={idx} display='flex' alignContent='center'>
+          <Tr
+            key={idx}
+            display='flex'
+            alignContent='center'
+            onClick={() => SubPageLink(item['im:name'].label)}
+          >
             <Td>
               <Image src={`${item['im:image'][0].label}`} height='35px'></Image>
             </Td>
@@ -53,12 +57,7 @@ function TopChart({ data }: { data: Ientryinfo[] }) {
             </Td>
             <Td width='200px'>{item['im:itemCount'].label}</Td>
             <Td width='150px'>{item['im:price'].label}</Td>
-            <Td
-              width='100px'
-              onClick={() => SubPageLink(item['im:name'].label)}
-            >
-              <DragHandleIcon />
-            </Td>
+            <Td width='180px'>{item['im:releaseDate'].attributes.label}</Td>
           </Tr>
         ))}
       </Tbody>
