@@ -25,7 +25,6 @@ export const tripSlice = createSlice({
   initialState: { result, itemfilter },
   reducers: {
     setlist: (state, action) => {
-      console.log(action.payload)
       const {
         sortButton,
         nameInput,
@@ -35,18 +34,20 @@ export const tripSlice = createSlice({
 
       const nameInputData = nameInput
         ? musicEntry.filter(
-            (el: any) =>
-              el['im:name'].label.includes(action.payload.nameInput) === true
+            el =>
+              el['im:name'].label
+                .toLowerCase()
+                .includes(action.payload.nameInput.toLowerCase()) === true
           )
         : musicEntry
 
       const sortButtonData =
         sortButton === 'down'
           ? [...musicEntry].sort((prev, cur) => {
-              return prev.title > cur.title ? -1 : 1
+              return prev.title.label > cur.title.label ? -1 : 1
             })
           : [...musicEntry].sort((prev, cur) => {
-              return prev.title > cur.title ? 1 : -1
+              return prev.title.label > cur.title.label ? 1 : -1
             })
 
       const filteredAll = sortButtonData.filter(x1 =>
