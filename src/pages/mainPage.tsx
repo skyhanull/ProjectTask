@@ -9,22 +9,19 @@ import { AppDispatch, RootState } from '../store/store'
 
 function MainPage() {
   const [searchParams] = useSearchParams()
-
   const ListAllData = useSelector((state: RootState) => state.musicSlice)
+  const dispatch = useDispatch<AppDispatch>()
 
   const filterData =
     ListAllData.itemfilter.entry.length > 0
       ? ListAllData.itemfilter.entry
       : ListAllData.result.entry
 
-  const dispatch = useDispatch<AppDispatch>()
-
   const ChangeHanlder = useCallback(() => {
     const nameInput =
       searchParams.get('name') === null ? '' : searchParams.get('name')
     const sortButton =
       searchParams.get('sort') === null ? 'down' : searchParams.get('sort')
-
     const musicEntry = ListAllData.result.entry
 
     const dispalyData = {

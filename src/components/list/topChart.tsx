@@ -1,6 +1,6 @@
 import React from 'react'
 import Ientryinfo from '../../types'
-import { Table, Thead, Tbody, Tr, Th, Td, Image, Flex } from '@chakra-ui/react'
+import { Table, Thead, Tbody, Tr, Th, Td, Image } from '@chakra-ui/react'
 import SortButton from '../sort/sortButton'
 import { useNavigate } from 'react-router-dom'
 

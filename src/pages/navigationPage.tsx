@@ -21,7 +21,6 @@ function NavigationPage() {
           </Flex>
         </Link>
       </Box>
-
       <Outlet />
     </Flex>
   )

@@ -20,8 +20,8 @@ const itemfilter: IALLInfo = {
   icon: { label: '' },
 }
 
-export const tripSlice = createSlice({
-  name: 'tripSlice',
+export const musicSlice = createSlice({
+  name: 'musicSlice',
   initialState: { result, itemfilter },
   reducers: {
     setlist: (state, action) => {
@@ -37,7 +37,7 @@ export const tripSlice = createSlice({
             el =>
               el['im:name'].label
                 .toLowerCase()
-                .includes(action.payload.nameInput.toLowerCase()) === true
+                .includes(nameInput.toLowerCase()) === true
           )
         : musicEntry
 
@@ -64,5 +64,5 @@ export const tripSlice = createSlice({
   },
 })
 
-export const { setlist } = tripSlice.actions
-export default tripSlice.reducer
+export const { setlist } = musicSlice.actions
+export default musicSlice.reducer
