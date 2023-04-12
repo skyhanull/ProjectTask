@@ -43,7 +43,7 @@ function Information({ data }: { data: Ientryinfo[] }) {
             <Box mb='5'>
               <Heading size='lg'>{data[0]['im:name'].label}</Heading>
               {/* <Link href={`${artistLink}`} isExternal color='green.300'> */}
-              <Link to='route' target='_blank'>
+              <Link to={`${artistLink}`} target='_blank'>
                 <Text py='1' color='green.300'>
                   {datas['im:artist'].label}
                 </Text>
