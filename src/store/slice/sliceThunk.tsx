@@ -4,7 +4,7 @@ import getInfo from '../../apis/Api'
 const thunkApi = createAsyncThunk('api', async () => {
   try {
     const response = await getInfo()
-    return response.entry
+    return response
   } catch {
     throw new Error()
   }
