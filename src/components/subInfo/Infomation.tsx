@@ -15,6 +15,7 @@ function Information({ data }: { data: Ientryinfo[] }) {
   const datas = data[0]
 
   const artistLink = datas['im:artist'].attributes.href
+
   return (
     <main>
       <Box m='40px'>
@@ -42,8 +43,12 @@ function Information({ data }: { data: Ientryinfo[] }) {
           <CardBody m='5'>
             <Box mb='5'>
               <Heading size='lg'>{data[0]['im:name'].label}</Heading>
-              {/* <Link href={`${artistLink}`} isExternal color='green.300'> */}
-              <Link to={`${artistLink}`} target='_blank'>
+
+              <Link
+                to={`${artistLink}`}
+                target='_blank'
+                rel='noopener noreferrer'
+              >
                 <Text py='1' color='green.300'>
                   {datas['im:artist'].label}
                 </Text>
