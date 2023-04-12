@@ -9,12 +9,7 @@ function NavigationPage() {
     <Flex>
       <Box height='100vh' width='20%' backgroundColor='gray.300'>
         <Link to='/'>
-          <Box
-            width='100%'
-            display='flex'
-            justifyContent='center'
-            flexDirection='row'
-          >
+          <Flex width='100%' justify='center' direction='row'>
             <img
               src={`${ListAllData.result.icon.label}`}
               height='40px'
@@ -23,7 +18,7 @@ function NavigationPage() {
             <Text as='b' fontSize='1.5rem'>
               ELMusic
             </Text>
-          </Box>
+          </Flex>
         </Link>
       </Box>
 
