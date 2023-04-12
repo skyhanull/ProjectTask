@@ -41,7 +41,7 @@ function MainPage() {
 
   return (
     <Box h='100vh' overflowY='scroll' ml='30px'>
-      <Text fontSize='5xl' as='b'>
+      <Text fontSize='2rem' as='b'>
         {ListAllData.result.title.label}
       </Text>
       <Flex flex={1}>
