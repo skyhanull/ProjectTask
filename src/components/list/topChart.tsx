@@ -1,7 +1,7 @@
 import React from 'react'
-import Ientryinfo from '../types'
+import Ientryinfo from '../../types'
 import { Table, Thead, Tbody, Tr, Th, Td, Image } from '@chakra-ui/react'
-import SortButton from './sort/sortButton'
+import SortButton from '../sort/sortButton'
 import { useNavigate } from 'react-router-dom'
 import { DragHandleIcon } from '@chakra-ui/icons'
 
@@ -31,7 +31,7 @@ function TopChart({ data }: { data: Ientryinfo[] }) {
           <Th width='200px' display='flex' alignItems='center'>
             itemCount
           </Th>
-          <Th width='200px' display='flex' alignItems='center'>
+          <Th width='150px' display='flex' alignItems='center'>
             price
           </Th>
           <Th width='200px' display='flex' alignItems='center'>
@@ -52,8 +52,11 @@ function TopChart({ data }: { data: Ientryinfo[] }) {
               {item['im:artist'].label}
             </Td>
             <Td width='200px'>{item['im:itemCount'].label}</Td>
-            <Td width='200px'>{item['im:price'].label}</Td>
-            <Td onClick={() => SubPageLink(item['im:name'].label)}>
+            <Td width='150px'>{item['im:price'].label}</Td>
+            <Td
+              width='100px'
+              onClick={() => SubPageLink(item['im:name'].label)}
+            >
               <DragHandleIcon />
             </Td>
           </Tr>
