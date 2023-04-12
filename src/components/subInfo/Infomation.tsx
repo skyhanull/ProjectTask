@@ -8,9 +8,13 @@ import {
   CardBody,
   Image,
   Tag,
+  Link,
 } from '@chakra-ui/react'
 
 function Information({ data }: { data: Ientryinfo[] }) {
+  const datas = data[0]
+
+  const artistLink = datas['im:artist'].attributes.href
   return (
     <main>
       <Box m='40px'>
@@ -29,7 +33,7 @@ function Information({ data }: { data: Ientryinfo[] }) {
         <Image
           maxW={{ base: '100%', sm: '200px' }}
           maxH={{ base: '100%', sm: '200px' }}
-          src={`${data[0]['im:image'][2].label}`}
+          src={`${datas['im:image'][2].label}`}
           alt='Caffe Latte'
           m='10'
         />
@@ -38,30 +42,32 @@ function Information({ data }: { data: Ientryinfo[] }) {
           <CardBody m='5'>
             <Box mb='5'>
               <Heading size='lg'>{data[0]['im:name'].label}</Heading>
-              <Text py='1' color='green.300'>
-                {data[0]['im:artist'].label}
-              </Text>
+              <Link href={`${artistLink}`} isExternal color='green.300'>
+                <Text py='1' color='green.300'>
+                  {datas['im:artist'].label}
+                </Text>
+              </Link>
             </Box>
             <Box as='b'>
               <Text py='2'>
-                Catagory:<Tag ml='2'>{data[0].category.attributes.label}</Tag>
+                Catagory:<Tag ml='2'>{datas.category.attributes.label}</Tag>
               </Text>
               <Text py='2'>
-                Count:<Tag ml='2'>{data[0]['im:itemCount'].label}</Tag>
+                Count:<Tag ml='2'>{datas['im:itemCount'].label}</Tag>
               </Text>
               <Text py='2'>
-                Price:<Tag ml='2'>{data[0]['im:price'].label}</Tag>
+                Price:<Tag ml='2'>{datas['im:price'].label}</Tag>
               </Text>
               <Text py='2'>
                 Price:
                 <Text as='i' color='gray.400'>
-                  {data[0].rights.label}
+                  {datas.rights.label}
                 </Text>
               </Text>
               <Text py='2'>
                 releaseDate:
                 <Text as='i' color='gray.400'>
-                  {data[0]['im:releaseDate'].attributes.label}
+                  {datas['im:releaseDate'].attributes.label}
                 </Text>
               </Text>
             </Box>
