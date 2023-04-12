@@ -2,8 +2,23 @@ import { createSlice } from '@reduxjs/toolkit'
 import sliceThunk from './sliceThunk'
 import Ientryinfo from '../../types'
 
-const result: Ientryinfo[] = []
-const itemfilter: Ientryinfo[] = []
+interface IALLInfo {
+  title: { label: string }
+  entry: Ientryinfo[]
+  icon: { label: string }
+}
+
+const result: IALLInfo = {
+  title: { label: '' },
+  entry: [],
+  icon: { label: '' },
+}
+
+const itemfilter: IALLInfo = {
+  title: { label: '' },
+  entry: [],
+  icon: { label: '' },
+}
 
 export const tripSlice = createSlice({
   name: 'tripSlice',
@@ -38,11 +53,7 @@ export const tripSlice = createSlice({
         nameInputData.some(x2 => x1['im:name'].label === x2['im:name'].label)
       )
 
-      state.itemfilter = filteredAll
-    },
-
-    filterprice: (state, action) => {
-      state.itemfilter = action.payload
+      state.itemfilter.entry = filteredAll
     },
   },
   extraReducers: builder => {
@@ -52,6 +63,5 @@ export const tripSlice = createSlice({
   },
 })
 
-export const { setlist, filterprice } = tripSlice.actions
-// store에서 add, remove, complte 액션을 내보낸다.
+export const { setlist } = tripSlice.actions
 export default tripSlice.reducer
