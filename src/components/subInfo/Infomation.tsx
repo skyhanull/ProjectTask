@@ -35,7 +35,7 @@ function Information({ data }: { data: Ientryinfo[] }) {
           maxW={{ base: '100%', sm: '200px' }}
           maxH={{ base: '100%', sm: '200px' }}
           src={`${datas['im:image'][2].label}`}
-          alt='Caffe Latte'
+          alt={`{${datas['im:name'].label}}`}
           m='10'
         />
 

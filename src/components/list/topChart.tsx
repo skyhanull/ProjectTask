@@ -47,6 +47,7 @@ function TopChart({ data }: { data: Ientryinfo[] }) {
                 src={`${item['im:image'][0].label}`}
                 height='35px'
                 width='40px'
+                alt={`${item['im:name'].label}`}
               ></Image>
             </Td>
             <Td width='15rem' overflow='hidden'>
