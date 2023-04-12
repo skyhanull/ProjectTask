@@ -84,16 +84,3 @@ export default interface Ientryinfo {
     }
   }
 }
-
-export default interface ITriplInfo {
-  author: {
-    name: {
-      label: string
-    }
-    uri: {
-      label: string
-    }
-  }
-
-  // entry: Ientryinfo[]
-}
