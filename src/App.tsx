@@ -2,7 +2,7 @@ import './App.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import React, { useEffect } from 'react'
 import MainPage from './pages/mainPage'
-import tripApi from './store/slice/sliceThunk'
+import thunkApi from './store/slice/sliceThunk'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from './store/store'
 import NotFound from './pages/notFoundPage'
@@ -13,7 +13,7 @@ function App() {
   const dispatch = useDispatch<AppDispatch>()
 
   useEffect(() => {
-    dispatch(tripApi())
+    dispatch(thunkApi())
   }, [dispatch])
 
   return (
