@@ -13,8 +13,7 @@ import { Link } from 'react-router-dom'
 
 function Information({ data }: { data: Ientryinfo[] }) {
   const datas = data[0]
-
-  const artistLink = datas['im:artist'].attributes.href
+  // const artistLink = datas['im:artist']?.attributes?.href
 
   return (
     <main>
@@ -34,7 +33,7 @@ function Information({ data }: { data: Ientryinfo[] }) {
         <Image
           maxW={{ base: '100%', sm: '200px' }}
           maxH={{ base: '100%', sm: '200px' }}
-          src={`${datas['im:image'][2].label}`}
+          src={`${datas['im:image'][2]?.label}`}
           alt={`{${datas['im:name'].label}}`}
           m='10'
         />
@@ -44,15 +43,15 @@ function Information({ data }: { data: Ientryinfo[] }) {
             <Box mb='5'>
               <Heading size='lg'>{data[0]['im:name'].label}</Heading>
 
-              <Link
+              {/* <Link
                 to={`${artistLink}`}
                 target='_blank'
                 rel='noopener noreferrer'
-              >
-                <Text py='1' color='green.300'>
-                  {datas['im:artist'].label}
-                </Text>
-              </Link>
+              > */}
+              <Text py='1' color='green.300'>
+                {datas['im:artist']?.label}
+              </Text>
+              {/* </Link> */}
             </Box>
             <Box as='b'>
               <Text py='2'>
