@@ -15,7 +15,7 @@ function TopChart({ data }: { data: Ientryinfo[] }) {
     <Table variant='striped' colorScheme='gray' size='sm'>
       <Thead>
         <Tr display='flex'>
-          <Th width='17rem' display='flex' alignItems='center'>
+          <Th width='17.5rem' display='flex' alignItems='center'>
             Song <SortButton />
           </Th>
           <Th></Th>
