@@ -25,21 +25,19 @@ function NameSearch() {
     setSearchParams(searchParams)
   }
   return (
-    <div>
-      <InputGroup>
-        <Input
-          w='300px'
-          type='text'
-          placeholder='Search'
-          onChange={e => setName(e.target.value)}
-          defaultValue={name}
-          onKeyPress={submitHandler}
-        />
-        <InputLeftElement>
-          <CloseIcon onClick={resetHandler} />
-        </InputLeftElement>
-      </InputGroup>
-    </div>
+    <InputGroup>
+      <Input
+        w='300px'
+        type='text'
+        placeholder='Search'
+        onChange={e => setName(e.target.value)}
+        defaultValue={name}
+        onKeyPress={submitHandler}
+      />
+      <InputLeftElement>
+        <CloseIcon onClick={resetHandler} />
+      </InputLeftElement>
+    </InputGroup>
   )
 }
 
